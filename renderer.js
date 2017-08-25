@@ -2,10 +2,16 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const Application = require('./components/Application.js')
 
+const initialState = {
+  file: {
+    path: ''
+  }
+}
+
 // Reload
-function reload(state = {}) {
+function reload(state = initialState) {
   ReactDOM.render(
-    React.createElement(Application, {}, state),
+    React.createElement(Application, state),
     document.getElementById('root')
   )
 }
@@ -16,9 +22,11 @@ function handleDragDrop() {
     e.preventDefault()
     e.stopPropagation()
     
-    reload({
-      file: e.dataTransfer.files.first
-    })
+    if (e.dataTransfer.files.length > 0) {
+      reload({
+        file: e.dataTransfer.files[0]
+      })
+    }
   })
 
   document.addEventListener('dragover', (e) =>  {
