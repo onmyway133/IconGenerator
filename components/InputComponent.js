@@ -4,13 +4,15 @@ const Paper = require('material-ui').Paper
 const RadioButtonGroup = require('material-ui').RadioButtonGroup
 const RadioButton = require('material-ui').RadioButton
 const RaisedButton = require('material-ui').RaisedButton
+const CardText = require('material-ui').CardText
 
 class InputComponent extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      choice: 'iOS'
+      choice: 'iOS',
+      imageDescription: 'hello'
     }
 
     this.handleChoiceChange = this.handleChoiceChange.bind(this)
@@ -44,32 +46,59 @@ class InputComponent extends React.Component {
   makeImage() {
     const divOptions = {
       style: {
-        flex: 1,
+        flex: 1.5,
         padding: '10px'
       }
     }
 
     const paperOptions = {
       style: {
-        display: 'flex',
         width: '100%',
-        height: '100%',
-        justifyContent: 'center'
+        height: '100%'
+      }
+    }
+
+    return React.createElement('div', divOptions,
+      React.createElement(Paper, paperOptions,
+        this.makeImageElement(),
+        this.makeImageDescriptionElement()
+      )
+    )
+  }
+
+  makeImageElement() {
+    const divOptions = {
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        paddingTop: '100px'
       }
     }
 
     const imgOptions = {
       style: {
         width: '80%',
-        alignSelf: 'center'
+        height: 'auto'
       },
       src: 'http://html.com/wp-content/uploads/flamingo.jpg'
     }
 
     return React.createElement('div', divOptions,
-      React.createElement(Paper, paperOptions,
-        React.createElement('img', imgOptions)
-      )
+      React.createElement('img', imgOptions)
+    )
+  }
+
+  makeImageDescriptionElement() {
+    const divOptions = {
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '10px'
+      }
+    }
+
+    return React.createElement('div', divOptions, 
+      React.createElement(CardText, {}, this.state.imageDescription)
     )
   }
 

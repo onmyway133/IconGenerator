@@ -9,8 +9,8 @@ let win
 function createWindow () {
    win = new BrowserWindow({
     title: 'Icon Generator',
-    width: 800, 
-    height: 700,
+    width: 600, 
+    height: 500,
     icon: __dirname + '/Icon/Icon.icns'
   })
 
