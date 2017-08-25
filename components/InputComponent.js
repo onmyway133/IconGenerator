@@ -12,20 +12,40 @@ class InputComponent extends React.Component {
   }
 
   render() {
-    return React.createElement('div', {}, 
+    const divOptions = {
+      style: {
+        display: 'flex',
+        alignSelf: 'stretch',
+        width: '100%'
+      }
+    }
+
+    return React.createElement('div', divOptions, 
       this.makeImage(),
       this.makeChoices()    
     )
   }
 
   makeImage() {
-    return React.createElement('div', {},
+    const divOptions = {
+      style: {
+        flex: 1
+      }
+    }
+
+    return React.createElement('div', divOptions,
       React.createElement(Paper, {})
     )
   }
 
   makeChoices() {
-    return React.createElement('div', {},
+    const divOptions = {
+      style: {
+        flex: 1
+      }
+    }
+
+    return React.createElement('div', divOptions,
       React.createElement(Paper, {})
     )
   }

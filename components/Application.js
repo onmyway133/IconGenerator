@@ -18,8 +18,16 @@ class Application extends React.Component {
   }
 
   render() {
+    const divOptions = {
+      style: {
+        width: '100%',
+        alignSelf: 'stretch',
+        display: 'flex'
+      }
+    }
+
     return React.createElement(MuiThemeProvider, {},
-      React.createElement('div', {},
+      React.createElement('div', divOptions,
         React.createElement(InputComponent, {}) 
       )
     )
