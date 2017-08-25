@@ -2,6 +2,7 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const injectTapEventPlugin = require('react-tap-event-plugin')
 const Paper = require('material-ui').Paper
+const MuiThemeProvider = require('material-ui/styles/').MuiThemeProvider
 
 // http://www.material-ui.com/#/get-started/installation
 injectTapEventPlugin()
@@ -16,9 +17,11 @@ class Application extends React.Component {
   }
 
   render() {
-    return React.createElement('div', {},
-      this.makeImage(),
-      this.makeChoices()
+    return React.createElement(MuiThemeProvider, {},
+      React.createElement('div', {}, 
+        this.makeImage(),
+        this.makeChoices()
+      )
     )
   }
 
