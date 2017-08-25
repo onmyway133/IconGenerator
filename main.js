@@ -8,7 +8,7 @@ let win
 
 function createWindow () {
    win = new BrowserWindow({
-    title: 'Push Notifications Tester',
+    title: 'Icon Generator',
     width: 800, 
     height: 700,
     icon: __dirname + '/Icon/Icon.icns'

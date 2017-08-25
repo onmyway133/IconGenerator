@@ -1,4 +1,3 @@
-const ipc = require('electron').ipcRenderer
 const React = require('react')
 const ReactDOM = require('react-dom')
 const Application = require('./components/Application.js')
