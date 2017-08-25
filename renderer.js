@@ -3,12 +3,30 @@ const ReactDOM = require('react-dom')
 const Application = require('./components/Application.js')
 
 // Reload
-function reload() {
+function reload(state = {}) {
   ReactDOM.render(
-    React.createElement(Application, {}),
+    React.createElement(Application, {}, state),
     document.getElementById('root')
   )
 }
 
-// Reload initially
+// Drag and Drop
+function handleDragDrop() {
+  document.addEventListener('drop', (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    reload({
+      file: e.dataTransfer.files.first
+    })
+  })
+
+  document.addEventListener('dragover', (e) =>  {
+    e.preventDefault()
+    e.stopPropagation()
+  })
+}
+
+// Initially
+handleDragDrop()
 reload()

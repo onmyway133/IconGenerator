@@ -28,7 +28,7 @@ class Application extends React.Component {
 
     return React.createElement(MuiThemeProvider, {},
       React.createElement('div', divOptions,
-        React.createElement(InputComponent, {}) 
+        React.createElement(InputComponent, {}, this.props.file) 
       )
     )
   }

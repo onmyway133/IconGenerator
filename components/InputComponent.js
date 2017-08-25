@@ -81,7 +81,7 @@ class InputComponent extends React.Component {
         height: '300px',
         border: '1px solid black'
       },
-      src: 'http://html.com/wp-content/uploads/flamingo.jpg'
+      src: this.props.file != undefined ? this.props.file.path : ''
     }
 
     return React.createElement('div', divOptions,
