@@ -6,6 +6,10 @@
   "repository": "https://github.com/onmyway133/IconGenerator",
   "author": "Khoa Pham",
   "license": "MIT",
+  "scripts": {
+    "start": "electron main.js",
+    "release": "electron-packager . --icon=Icon/Icon.icns"
+  },
   "dependencies": {
     "electron": "^1.7.5",
     "material-ui": "^0.19.0",
