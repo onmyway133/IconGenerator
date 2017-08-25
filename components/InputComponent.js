@@ -33,8 +33,27 @@ class InputComponent extends React.Component {
       }
     }
 
+    const paperOptions = {
+      style: {
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center'
+      }
+    }
+
+    const imgOptions = {
+      style: {
+        width: '50%',
+        alignSelf: 'center'
+      },
+      src: 'http://html.com/wp-content/uploads/flamingo.jpg'
+    }
+
     return React.createElement('div', divOptions,
-      React.createElement(Paper, {})
+      React.createElement(Paper, paperOptions,
+        React.createElement('img', imgOptions)
+      )
     )
   }
 
