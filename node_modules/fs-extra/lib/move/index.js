@@ -1,105 +1,98 @@
+'use strict'
+
 // most of this code was written by Andrew Kelley
 // licensed under the BSD license: see
 // https://github.com/andrewrk/node-mv/blob/master/package.json
 
 // this needs a cleanup
 
-var fs = require('graceful-fs')
-var ncp = require('../copy/ncp')
-var path = require('path')
-var rimraf = require('rimraf')
-var mkdirp = require('../mkdirs').mkdirs
+const u = require('universalify').fromCallback
+const fs = require('graceful-fs')
+const ncp = require('../copy/ncp')
+const path = require('path')
+const remove = require('../remove').remove
+const mkdirp = require('../mkdirs').mkdirs
 
-function mv (source, dest, options, callback) {
+function move (src, dest, options, callback) {
   if (typeof options === 'function') {
     callback = options
     options = {}
   }
 
-  var shouldMkdirp = ('mkdirp' in options) ? options.mkdirp : true
-  var clobber = ('clobber' in options) ? options.clobber : false
+  const overwrite = options.overwrite || options.clobber || false
 
-  var limit = options.limit || 16
-
-  if (shouldMkdirp) {
-    mkdirs()
-  } else {
-    doRename()
-  }
-
-  function mkdirs () {
-    mkdirp(path.dirname(dest), function (err) {
+  isSrcSubdir(src, dest, (err, itIs) => {
+    if (err) return callback(err)
+    if (itIs) return callback(new Error(`Cannot move '${src}' to a subdirectory of itself, '${dest}'.`))
+    mkdirp(path.dirname(dest), err => {
       if (err) return callback(err)
       doRename()
     })
-  }
+  })
 
   function doRename () {
-    if (clobber) {
-      fs.rename(source, dest, function (err) {
+    if (path.resolve(src) === path.resolve(dest)) {
+      fs.access(src, callback)
+    } else if (overwrite) {
+      fs.rename(src, dest, err => {
         if (!err) return callback()
 
         if (err.code === 'ENOTEMPTY' || err.code === 'EEXIST') {
-          rimraf(dest, function (err) {
+          remove(dest, err => {
             if (err) return callback(err)
-            options.clobber = false // just clobbered it, no need to do it again
-            mv(source, dest, options, callback)
+            options.overwrite = false // just overwriteed it, no need to do it again
+            move(src, dest, options, callback)
           })
           return
         }
 
         // weird Windows shit
         if (err.code === 'EPERM') {
-          setTimeout(function () {
-            rimraf(dest, function (err) {
+          setTimeout(() => {
+            remove(dest, err => {
               if (err) return callback(err)
-              options.clobber = false
-              mv(source, dest, options, callback)
+              options.overwrite = false
+              move(src, dest, options, callback)
             })
           }, 200)
           return
         }
 
         if (err.code !== 'EXDEV') return callback(err)
-        moveAcrossDevice(source, dest, clobber, limit, callback)
+        moveAcrossDevice(src, dest, overwrite, callback)
       })
     } else {
-      fs.link(source, dest, function (err) {
+      fs.link(src, dest, err => {
         if (err) {
-          if (err.code === 'EXDEV' || err.code === 'EISDIR' || err.code === 'EPERM') {
-            moveAcrossDevice(source, dest, clobber, limit, callback)
-            return
+          if (err.code === 'EXDEV' || err.code === 'EISDIR' || err.code === 'EPERM' || err.code === 'ENOTSUP') {
+            return moveAcrossDevice(src, dest, overwrite, callback)
           }
-          callback(err)
-          return
+          return callback(err)
         }
-        fs.unlink(source, callback)
+        return fs.unlink(src, callback)
       })
     }
   }
 }
 
-function moveAcrossDevice (source, dest, clobber, limit, callback) {
-  fs.stat(source, function (err, stat) {
-    if (err) {
-      callback(err)
-      return
-    }
+function moveAcrossDevice (src, dest, overwrite, callback) {
+  fs.stat(src, (err, stat) => {
+    if (err) return callback(err)
 
     if (stat.isDirectory()) {
-      moveDirAcrossDevice(source, dest, clobber, limit, callback)
+      moveDirAcrossDevice(src, dest, overwrite, callback)
     } else {
-      moveFileAcrossDevice(source, dest, clobber, limit, callback)
+      moveFileAcrossDevice(src, dest, overwrite, callback)
     }
   })
 }
 
-function moveFileAcrossDevice (source, dest, clobber, limit, callback) {
-  var outFlags = clobber ? 'w' : 'wx'
-  var ins = fs.createReadStream(source)
-  var outs = fs.createWriteStream(dest, {flags: outFlags})
+function moveFileAcrossDevice (src, dest, overwrite, callback) {
+  const flags = overwrite ? 'w' : 'wx'
+  const ins = fs.createReadStream(src)
+  const outs = fs.createWriteStream(dest, { flags })
 
-  ins.on('error', function (err) {
+  ins.on('error', err => {
     ins.destroy()
     outs.destroy()
     outs.removeListener('close', onClose)
@@ -107,17 +100,17 @@ function moveFileAcrossDevice (source, dest, clobber, limit, callback) {
     // may want to create a directory but `out` line above
     // creates an empty file for us: See #108
     // don't care about error here
-    fs.unlink(dest, function () {
+    fs.unlink(dest, () => {
       // note: `err` here is from the input stream errror
       if (err.code === 'EISDIR' || err.code === 'EPERM') {
-        moveDirAcrossDevice(source, dest, clobber, limit, callback)
+        moveDirAcrossDevice(src, dest, overwrite, callback)
       } else {
         callback(err)
       }
     })
   })
 
-  outs.on('error', function (err) {
+  outs.on('error', err => {
     ins.destroy()
     outs.destroy()
     outs.removeListener('close', onClose)
@@ -128,34 +121,50 @@ function moveFileAcrossDevice (source, dest, clobber, limit, callback) {
   ins.pipe(outs)
 
   function onClose () {
-    fs.unlink(source, callback)
+    fs.unlink(src, callback)
   }
 }
 
-function moveDirAcrossDevice (source, dest, clobber, limit, callback) {
-  var options = {
-    stopOnErr: true,
-    clobber: false,
-    limit: limit
+function moveDirAcrossDevice (src, dest, overwrite, callback) {
+  const options = {
+    overwrite: false
   }
 
-  function startNcp () {
-    ncp(source, dest, options, function (errList) {
-      if (errList) return callback(errList[0])
-      rimraf(source, callback)
-    })
-  }
-
-  if (clobber) {
-    rimraf(dest, function (err) {
+  if (overwrite) {
+    remove(dest, err => {
       if (err) return callback(err)
       startNcp()
     })
   } else {
     startNcp()
   }
+
+  function startNcp () {
+    ncp(src, dest, options, err => {
+      if (err) return callback(err)
+      remove(src, callback)
+    })
+  }
+}
+
+// return true if dest is a subdir of src, otherwise false.
+// extract dest base dir and check if that is the same as src basename
+function isSrcSubdir (src, dest, cb) {
+  fs.stat(src, (err, st) => {
+    if (err) return cb(err)
+    if (st.isDirectory()) {
+      const baseDir = dest.split(path.dirname(src) + path.sep)[1]
+      if (baseDir) {
+        const destBasename = baseDir.split(path.sep)[0]
+        if (destBasename) return cb(null, src !== dest && dest.indexOf(src) > -1 && destBasename === path.basename(src))
+        return cb(null, false)
+      }
+      return cb(null, false)
+    }
+    return cb(null, false)
+  })
 }
 
 module.exports = {
-  move: mv
+  move: u(move)
 }
