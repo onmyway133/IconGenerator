@@ -5,5 +5,11 @@
   "main": "main.js",
   "repository": "https://github.com/onmyway133/IconGenerator",
   "author": "Khoa Pham",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.5",
+    "material-ui": "^0.19.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
 }
