@@ -1,6 +1,10 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const injectTapEventPlugin = require('react-tap-event-plugin')
 const Paper = require('material-ui').Paper
+
+// http://www.material-ui.com/#/get-started/installation
+injectTapEventPlugin()
 
 class Application extends React.Component {
   constructor(props) {
