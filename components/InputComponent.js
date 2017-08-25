@@ -12,7 +12,7 @@ class InputComponent extends React.Component {
 
     this.state = {
       choice: 'iOS',
-      imageDescription: 'hello'
+      imageDescription: 'Drag image onto the above box'
     }
 
     this.handleChoiceChange = this.handleChoiceChange.bind(this)
@@ -71,14 +71,15 @@ class InputComponent extends React.Component {
       style: {
         display: 'flex',
         justifyContent: 'center',
-        paddingTop: '100px'
+        paddingTop: '20px'
       }
     }
 
     const imgOptions = {
       style: {
-        width: '80%',
-        height: 'auto'
+        width: '300px',
+        height: '300px',
+        border: '1px solid black'
       },
       src: 'http://html.com/wp-content/uploads/flamingo.jpg'
     }

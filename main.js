@@ -11,6 +11,7 @@ function createWindow () {
     title: 'Icon Generator',
     width: 600, 
     height: 500,
+    resizable: false,
     icon: __dirname + '/Icon/Icon.icns'
   })
 
