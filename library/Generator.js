@@ -69,6 +69,8 @@ class Generator {
         return Asset.tvOS()
       case 'watchOS':
         return Asset.watchOS()
+      default:
+        console.log('huh')
     }
   }
 }

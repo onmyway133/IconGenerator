@@ -7,38 +7,38 @@ class Asset {
 
   // https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/#app-icon-sizes
   static iOS() {
-    this.iOS_iPhone() + this.iOS_iPad()
+    return this.iOS_iPhone().concat(this.iOS_iPad())
   }
 
   static iOS_iPhone() {
     return [
-
+      new Asset(1, [])
     ]
   }
 
   static iOS_iPad() {
     return [
-
+      new Asset(1, [])
     ]
   }
 
   // https://developer.apple.com/macos/human-interface-guidelines/icons-and-images/app-icon/
   static macOS() {
     return [
-
+      new Asset(1, [])
     ]
   }
 
   // https://developer.apple.com/watchos/human-interface-guidelines/icons-and-images/app-icon/
   static watchOS() {
     return [
-      
+      new Asset(1, [])
     ]
   }
 
   // https://developer.apple.com/tvos/human-interface-guidelines/icons-and-images/app-icon/
   static tvOS() {
-    return this.tvOS_38mm() + this.tvOS_42mm()
+    return this.tvOS_38mm().concat(this.tvOS_42mm())
   }
 
   static tvOS_38mm() {

@@ -37,7 +37,7 @@ class InputComponent extends React.Component {
 
   // action
 
-  handleChoiceChange(value) {
+  handleChoiceChange(event, value) {
     this.setState({
       choice: value
     })
@@ -158,7 +158,7 @@ class InputComponent extends React.Component {
         key: name
       }
 
-      return React.createElement('RadioButton', options)
+      return React.createElement(RadioButton, options)
     })
 
     const groupOptions = {
