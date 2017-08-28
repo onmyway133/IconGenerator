@@ -11,21 +11,29 @@ class Asset {
   }
 
   static iOS_iPhone() {
+    return [
 
+    ]
   }
 
   static iOS_iPad() {
+    return [
 
+    ]
   }
 
   // https://developer.apple.com/macos/human-interface-guidelines/icons-and-images/app-icon/
   static macOS() {
+    return [
 
+    ]
   }
 
   // https://developer.apple.com/watchos/human-interface-guidelines/icons-and-images/app-icon/
   static watchOS() {
-
+    return [
+      
+    ]
   }
 
   // https://developer.apple.com/tvos/human-interface-guidelines/icons-and-images/app-icon/
