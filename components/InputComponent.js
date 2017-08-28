@@ -6,6 +6,7 @@ const RadioButton = require('material-ui').RadioButton
 const RaisedButton = require('material-ui').RaisedButton
 const CardText = require('material-ui').CardText
 const sizeOf = require('image-size')
+const Generator = require('../library/Generator.js')
 
 class InputComponent extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class InputComponent extends React.Component {
     }
 
     this.handleChoiceChange = this.handleChoiceChange.bind(this)
+    this.handleGenerate = this.handleGenerate.bind(this)
   }
 
   render() {
@@ -39,6 +41,11 @@ class InputComponent extends React.Component {
     this.setState({
       choice: value
     })
+  }
+
+  handleGenerate() {
+    const generator = new Generator()
+    generator.generate(this.props.file.path, this.state.choice)
   }
 
   // make
@@ -184,7 +191,8 @@ class InputComponent extends React.Component {
 
     const buttonOptions = {
       backgroundColor: '#EB394E', 
-      onTouchTap: this.props.generate,
+      onTouchTap: this.handleGenerate,
+      disabled: this.props.file === undefined,
       style: {
         width: '80%'
       }

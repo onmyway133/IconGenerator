@@ -1,16 +1,17 @@
-const Sharp = require('sharp')
-const Asset = require('.Asset.js')
+const GraphicsMagick = require('gm')
+const Asset = require('./Asset.js')
 
 class Generator {
 
-  generate(platform) {
-    const assets = this.makeAssets(platform)
+  generate(path, choice) {
+    const assets = this.makeAssets(choice)
+
   }
 
   // Helper
 
-  makeAssets(platform) {
-    switch (platform) {
+  makeAssets(choice) {
+    switch (choice) {
       case 'iOS (iPhone)':
         return Asset.iOS_iPhone()
       case 'iOS (iPad)':
