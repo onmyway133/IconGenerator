@@ -103,7 +103,7 @@ class InputComponent extends React.Component {
       const sizeDescription = size.width + 'x' + size.height
       text = this.props.file.name + ' (' + sizeDescription + ')'
     } else {
-      text = 'Drag image onto the above box'
+      text = 'Drag image onto the above box. Prefer 1024x1024 or larger'
     }
 
     const divOptions = {
@@ -114,8 +114,14 @@ class InputComponent extends React.Component {
       }
     }
 
+    const textOptions = {
+      style: {
+        textAlign: 'center'
+      }
+    }
+
     return React.createElement('div', divOptions, 
-      React.createElement(CardText, {}, text)
+      React.createElement(CardText, textOptions, text)
     )
   }
 
