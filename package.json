@@ -17,9 +17,11 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-tap-event-plugin": "^2.0.1",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "sharp": "^0.18.2"
   },
   "devDependencies": {
-    "electron-packager": "^9.0.0"
+    "electron-packager": "^9.0.0",
+    "electron-rebuild": "^1.6.0"
   }
 }

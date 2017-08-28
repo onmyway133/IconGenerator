@@ -1,4 +1,4 @@
-const GraphicsMagick = require('gm')
+const Sharp = require('sharp')
 const Asset = require('./Asset.js')
 const Fs = require('fs')
 const Os = require('os')
@@ -35,11 +35,7 @@ class Generator {
   writeImages(path, assets, folderPath) {
     assets.forEach((asset) => {
       const output = folderPath.concat(`/${asset.filename}`)
-      GraphicsMagick(path)
-        .resize(asset.size, asset.size)
-        .write(output, (error) => {
-          console.log(error)
-        })
+      
     })
   }
 
