@@ -29,7 +29,26 @@ class Asset {
 
   // https://developer.apple.com/tvos/human-interface-guidelines/icons-and-images/app-icon/
   tvOS() {
+    return this.tvOS_38mm() + this.tvOS_42mm()
+  }
 
+  tvOS_38mm() {
+    return [
+      Asset(24, [2]),
+      Asset(40, [2]),
+      Asset(86, [2]),
+      Asset(29, [2])
+    ]
+  }
+  
+  tvOS_42mm() {
+    return [
+      Asset(27.5, [2]),
+      Asset(44, [2]),
+      Asset(40, [2]),
+      Asset(98, [2]),
+      Asset(29, [3])
+    ]
   }
 }
 
