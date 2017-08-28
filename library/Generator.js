@@ -1,7 +1,8 @@
 const GraphicsMagick = require('gm')
 const Asset = require('./Asset.js')
 const Fs = require('fs')
-const OS = require('os')
+const Os = require('os')
+const rimraf = require('rimraf')
 
 class Generator {
 
@@ -9,9 +10,9 @@ class Generator {
     const assets = this.makeAssets(choice)
 
     // folder
-    const downloadPath = OS.homedir().concat('/Downloads')
+    const downloadPath = Os.homedir().concat('/Downloads')
     const folderPath = downloadPath.concat('/Icon.appiconset')
-    Fs.mkdirSync(folderPath)
+    this.writeFolder(folderPath)
 
     // contents
     this.writeContents(assets, folderPath)
@@ -20,6 +21,14 @@ class Generator {
   }
 
   // Helper
+
+  writeFolder(folderPath) {
+    if (Fs.existsSync(folderPath)) {
+      rimraf.sync(folderPath)
+    }
+
+    Fs.mkdirSync(folderPath)
+  }
 
   writeContents(assets, folderPath) {
     const path = folderPath.concat('/Contents.json')
