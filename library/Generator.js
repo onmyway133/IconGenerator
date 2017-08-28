@@ -8,16 +8,12 @@ class Generator {
 
   generate(path, choice) {
     const assets = this.makeAssets(choice)
-
-    // folder
     const downloadPath = Os.homedir().concat('/Downloads')
     const folderPath = downloadPath.concat('/Icon.appiconset')
+
     this.writeFolder(folderPath)
-
-    // contents
     this.writeContents(assets, folderPath)
-
-    // images
+    this.writeImages(path, assets, folderPath)
   }
 
   // Helper
@@ -36,12 +32,23 @@ class Generator {
     Fs.writeFileSync(path, JSON.stringify(json))
   }
 
+  writeImages(path, assets, folderPath) {
+    assets.forEach((asset) => {
+      const output = folderPath.concat(`/${asset.filename}`)
+      GraphicsMagick(path)
+        .resize(asset.size, asset.size)
+        .write(output, (error) => {
+          console.log(error)
+        })
+    })
+  }
+
   makeContentsJson(assets) {
     const images = assets.map((asset) => {
       return {
         size: `${asset.size}x${asset.size}`,
         idiom: asset.idiom,
-        filename: `Icon-${asset.size}@${asset.scale}x.png`,
+        filename: asset.filename,
         scale: `${asset.scale}x`
       }
     })

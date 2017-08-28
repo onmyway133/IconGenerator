@@ -3,6 +3,7 @@ class Asset {
     this.size = size
     this.scale = scale
     this.idiom = idiom
+    this.filename = `Icon-${size}@${scale}x.png`
   }
 
   // https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/#app-icon-sizes
