@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "electron": "^1.7.5",
-    "gm": "^1.23.0",
     "image-size": "^0.6.1",
     "material-ui": "^0.19.0",
     "react": "^15.6.1",
