@@ -1,7 +1,8 @@
 class Asset {
-  constructor(size, scale) {
+  constructor(size, scale, idiom) {
     this.size = size
     this.scale = scale
+    this.idiom = idiom
   }
 
   // https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/#app-icon-sizes
