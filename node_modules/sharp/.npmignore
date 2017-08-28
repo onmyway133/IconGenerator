@@ -1,0 +1,14 @@
+build
+node_modules
+coverage
+.editorconfig
+.gitignore
+test
+.travis.yml
+appveyor.yml
+circle.yml
+mkdocs.yml
+vendor
+packaging
+preinstall.sh
+.nyc_output
