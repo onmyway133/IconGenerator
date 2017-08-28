@@ -35,7 +35,13 @@ class Generator {
   writeImages(path, assets, folderPath) {
     assets.forEach((asset) => {
       const output = folderPath.concat(`/${asset.filename}`)
-      
+      const size = asset.size * asset.scale
+      Sharp(path)
+        .resize(size, size)
+        .toFile(output, (error, info) => {
+          console.log(error)
+          console.log(info)
+        })
     })
   }
 
