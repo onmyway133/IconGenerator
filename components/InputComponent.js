@@ -100,7 +100,8 @@ class InputComponent extends React.Component {
     let text
     if (this.props.file !== undefined) {
       const size = sizeOf(this.props.file.path)
-      text = size.width + ' x ' + size.height + '\n' + 'hello'
+      const sizeDescription = size.width + 'x' + size.height
+      text = this.props.file.name + ' (' + sizeDescription + ')'
     } else {
       text = 'Drag image onto the above box'
     }
