@@ -1,5 +1,5 @@
 class Asset {
-  constructor(size, scale, idiom) {
+  constructor(size, scale, idiom = '') {
     this.size = size
     this.scale = scale
     this.idiom = idiom
@@ -35,20 +35,20 @@ class Asset {
 
   static tvOS_38mm() {
     return [
-      Asset(24, [2]),
-      Asset(40, [2]),
-      Asset(86, [2]),
-      Asset(29, [2])
+      new Asset(24, [2]),
+      new Asset(40, [2]),
+      new Asset(86, [2]),
+      new Asset(29, [2])
     ]
   }
   
   static tvOS_42mm() {
     return [
-      Asset(27.5, [2]),
-      Asset(44, [2]),
-      Asset(40, [2]),
-      Asset(98, [2]),
-      Asset(29, [3])
+      new Asset(27.5, [2]),
+      new Asset(44, [2]),
+      new Asset(40, [2]),
+      new Asset(98, [2]),
+      new Asset(29, [3])
     ]
   }
 }
