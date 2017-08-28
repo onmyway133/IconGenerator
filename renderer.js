@@ -2,14 +2,8 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const Application = require('./components/Application.js')
 
-const initialState = {
-  file: {
-    path: ''
-  }
-}
-
 // Reload
-function reload(state = initialState) {
+function reload(state = {}) {
   ReactDOM.render(
     React.createElement(Application, state),
     document.getElementById('root')

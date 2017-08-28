@@ -5,14 +5,14 @@ const RadioButtonGroup = require('material-ui').RadioButtonGroup
 const RadioButton = require('material-ui').RadioButton
 const RaisedButton = require('material-ui').RaisedButton
 const CardText = require('material-ui').CardText
+const sizeOf = require('image-size')
 
 class InputComponent extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      choice: 'iOS',
-      imageDescription: 'Drag image onto the above box'
+      choice: 'iOS'
     }
 
     this.handleChoiceChange = this.handleChoiceChange.bind(this)
@@ -67,6 +67,13 @@ class InputComponent extends React.Component {
   }
 
   makeImageElement() {
+    let path
+    if (this.props.file !== undefined) {
+      path = this.props.file.path
+    } else {
+      path = ''
+    }
+
     const divOptions = {
       style: {
         display: 'flex',
@@ -81,7 +88,7 @@ class InputComponent extends React.Component {
         height: '300px',
         border: '1px solid black'
       },
-      src: this.props.file.path
+      src: path
     }
 
     return React.createElement('div', divOptions,
@@ -90,6 +97,14 @@ class InputComponent extends React.Component {
   }
 
   makeImageDescriptionElement() {
+    let text
+    if (this.props.file !== undefined) {
+      const size = sizeOf(this.props.file.path)
+      text = size.width + ' x ' + size.height + '\n' + 'hello'
+    } else {
+      text = 'Drag image onto the above box'
+    }
+
     const divOptions = {
       style: {
         display: 'flex',
@@ -99,7 +114,7 @@ class InputComponent extends React.Component {
     }
 
     return React.createElement('div', divOptions, 
-      React.createElement(CardText, {}, this.state.imageDescription)
+      React.createElement(CardText, {}, text)
     )
   }
 
