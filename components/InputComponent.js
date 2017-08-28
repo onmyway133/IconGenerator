@@ -12,7 +12,7 @@ class InputComponent extends React.Component {
     super(props)
 
     this.state = {
-      choice: 'iOS'
+      choice: 'iOS (iPhone)'
     }
 
     this.handleChoiceChange = this.handleChoiceChange.bind(this)
@@ -141,7 +141,7 @@ class InputComponent extends React.Component {
     }
 
     const choices = [
-      "iOS", "macOS", "tvOS", "watchOS"
+      "iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "tvOS", "watchOS"
     ]
 
     const choiceElements = choices.map((name) => {
