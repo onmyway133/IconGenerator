@@ -1,11 +1,17 @@
 const GraphicsMagick = require('gm')
 const Asset = require('./Asset.js')
+const Fs = require('fs')
 
 class Generator {
 
   generate(path, choice) {
     const assets = this.makeAssets(choice)
 
+    // folder
+
+    // json
+
+    // images
   }
 
   // Helper
@@ -22,6 +28,8 @@ class Generator {
         return Asset.macOS()
       case 'tvOS':
         return Asset.tvOS()
+      case 'watchOS':
+        return Asset.watchOS()
     }
   }
 }
