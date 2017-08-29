@@ -1,19 +1,18 @@
 const Sharp = require('sharp')
-const Asset = require('./Asset.js')
 const Fs = require('fs')
 const Os = require('os')
 const rimraf = require('rimraf')
 
 class Generator {
 
-  generate(path, choice) {
-    const assets = this.makeAssets(choice)
+  generate(originalImagePath, choice) {
+    const contentsJson = this.makeContentsJson(choice)
     const downloadPath = Os.homedir().concat('/Downloads')
     const folderPath = downloadPath.concat('/Icon.appiconset')
 
     this.writeFolder(folderPath)
-    this.writeContents(assets, folderPath)
-    this.writeImages(path, assets, folderPath)
+    this.writeContentsJson(contentsJson, folderPath)
+    this.writeImages(originalImagePath, contentsJson, folderPath)
   }
 
   // Helper
@@ -26,18 +25,20 @@ class Generator {
     Fs.mkdirSync(folderPath)
   }
 
-  writeContents(assets, folderPath) {
+  writeContentsJson(json, folderPath) {
     const path = folderPath.concat('/Contents.json')
-    const json = this.makeContentsJson(assets)
     Fs.writeFileSync(path, JSON.stringify(json))
   }
 
-  writeImages(path, assets, folderPath) {
-    assets.forEach((asset) => {
-      const output = folderPath.concat(`/${asset.filename}`)
-      const size = asset.size * asset.scale
-      Sharp(path)
-        .resize(size, size)
+  writeImages(originalImagePath, contentsJson, folderPath) {
+    contentsJson.images.forEach((object) => {
+      const output = folderPath.concat(`/${object.filename}`)
+      const size = object.size.split('x')[0]
+      const scale = object.scale.replace('x', '')
+      const finalSize = size * scale
+
+      Sharp(originalImagePath)
+        .resize(finalSize, finalSize)
         .toFile(output, (error, info) => {
           console.log(error)
           console.log(info)
@@ -45,41 +46,40 @@ class Generator {
     })
   }
 
-  makeContentsJson(assets) {
-    const images = assets.map((asset) => {
-      return {
-        size: `${asset.size}x${asset.size}`,
-        idiom: asset.idiom,
-        filename: asset.filename,
-        scale: `${asset.scale}x`
-      }
+  makeContentsJson(choice) {
+    const idioms = this.idioms(choice)
+    const content = Fs.readFileSync(__dirname + '/Contents.json', 'utf8')
+    const json = JSON.parse(content)
+
+    json.images = json.images
+    .filter((object) => {
+      return idioms.includes(object.idiom)
+    }).map((object) => {
+      const size = object.size.split('x')[0]
+      object.filename = `icon-${size}@${object.scale}.png`
+
+      return object
     })
 
-    return {
-      images,
-      info: {
-        version: 1,
-        author: 'xcode'
-      }
-    }
+    return json
   }
 
-  makeAssets(choice) {
+  idioms(choice) {
     switch (choice) {
       case 'iOS (iPhone)':
-        return Asset.iOS_iPhone()
+        return ['iphone', 'ios-marketing']
       case 'iOS (iPad)':
-        return Asset.iOS_iPad()
+        return ['ipad', 'ios-marketing']
       case 'iOS (Universal)':
-        return Asset.iOS()
+        return ['iphone', 'ipad', 'ios-marketing']
       case 'macOS':
-        return Asset.macOS()
+        return ['mac']
       case 'tvOS':
-        return Asset.tvOS()
+        return []
       case 'watchOS':
-        return Asset.watchOS()
+        return ['watch', 'watch-marketing']
       default:
-        console.log('huh')
+        return []
     }
   }
 }
