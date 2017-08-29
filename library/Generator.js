@@ -2,20 +2,26 @@ const Sharp = require('sharp')
 const Fs = require('fs')
 const Os = require('os')
 const rimraf = require('rimraf')
+const Shell = require('electron').shell
 
 class Generator {
 
   generate(originalImagePath, choice) {
     const contentsJson = this.makeContentsJson(choice)
     const downloadPath = Os.homedir().concat('/Downloads')
-    const folderPath = downloadPath.concat('/Icon.appiconset')
+    const folderPath = downloadPath.concat('/AppIcon.appiconset')
 
     this.writeFolder(folderPath)
     this.writeContentsJson(contentsJson, folderPath)
     this.writeImages(originalImagePath, contentsJson, folderPath)
+    this.showFinder(folderPath)
   }
 
   // Helper
+
+  showFinder(path) {
+    Shell.showItemInFolder(path)
+  }
 
   writeFolder(folderPath) {
     if (Fs.existsSync(folderPath)) {
