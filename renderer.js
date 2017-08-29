@@ -1,6 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const Application = require('./components/Application.js')
+const Path = require('path')
 
 // Reload
 function reload(state = {}) {
@@ -16,11 +17,22 @@ function handleDragDrop() {
     e.preventDefault()
     e.stopPropagation()
     
-    if (e.dataTransfer.files.length > 0) {
-      reload({
-        file: e.dataTransfer.files[0]
-      })
+    if (e.dataTransfer.files.length <= 0) {
+      return
     }
+
+    const file = e.dataTransfer.files[0]
+    const extension = Path.extname(file.path).replace('.', '').toLowerCase()
+    const support = ['png', 'jpeg', 'jpg', 'webp', 'tiff', 'gif', 'svg']
+
+    if (!support.includes(extension)) {
+      console.log(extension)
+      return
+    }
+
+    reload({
+      file
+    })
   })
 
   document.addEventListener('dragover', (e) =>  {
