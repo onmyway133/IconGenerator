@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron main.js",
-    "release": "electron-packager . --icon=Icon/Icon.icns"
+    "release": "electron-packager . --icon=Icon/AppIcon.icns"
   },
   "dependencies": {
     "electron": "^1.7.5",
