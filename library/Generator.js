@@ -62,7 +62,7 @@ class Generator {
       return idioms.includes(object.idiom)
     }).map((object) => {
       const size = object.size.split('x')[0]
-      object.filename = `icon-${size}@${object.scale}.png`
+      object.filename = `icon_${size}@${object.scale}.png`
 
       return object
     })
