@@ -23,6 +23,7 @@
 ## Credit
 
 - Icon http://emojione.com/
+- Use [sharp](https://github.com/lovell/sharp) to resize images
 
 
 ## Author
