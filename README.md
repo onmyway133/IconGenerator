@@ -8,6 +8,7 @@
 
 - An `electron.js` app used for generating app icons
 - Support macOS
+- Follow [Human Interface Guidelines iOS](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
 
 ## How to install
 
