@@ -1,13 +1,28 @@
 # IconGenerator
 
-<div align = "center">
-<img src="Screenshots/banner.png" height="400"/>
-</div>
-
 ## Description
 
+- An `electron.js` app used for generating app icons
+- Support macOS
+
+## How to install
+
+- Download latest release from https://github.com/onmyway133/IconGenerator/releases
+
+## How to use
+
+- Drag image onto left box
+- Support `png`, `jpeg`, `jpg`, `webp`, `tiff`, `gif`, `svg`
+- Choose platform to generate
+
+<div align = "center">
+<img src="Screenshots/banner.png" width="600"/>
+</div>
+
+
+## Credit
+
 - Icon http://emojione.com/
-- Download from https://github.com/onmyway133/IconGenerator/releases
 
 
 ## Author
