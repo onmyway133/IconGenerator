@@ -1,7 +1,7 @@
 # IconGenerator
 
 <div align = "center">
-<img src="Screenshots/gif.gif" width="600"/>
+<img src="Screenshots/gif.gif" width="800"/>
 </div>
 
 ## Description
