@@ -1,4 +1,4 @@
-# IconGenerator
+# 𝕴𝖈𝖔𝖓 𝕲𝖊𝖓𝖊𝖗𝖆𝖙𝖔𝖗
 
 <div align = "center">
 <img src="Screenshots/gif.gif" width="800"/>
