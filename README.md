@@ -9,6 +9,7 @@
 - An `electron.js` app used for generating app icons
 - Support macOS
 - Follow [Human Interface Guidelines iOS](https://developer.apple.com/ios/human-interface-guidelines/graphics/app-icon/)
+- Generate based on latest Xcode [Contents.json](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/Contents.html)
 
 ## How to install
 
