@@ -29,7 +29,7 @@
 ### Generate `icns`
 
 - `IconGenerator` names file in `icon_size` format, to make it work for `iconutil`
-- Go to the folder where `AppIcon.appiconset` is stored, rename it to `AppIcon.iconset`, run
+- Go to the folder where `AppIcon.appiconset` is stored, rename it to `AppIcon.iconset`, delete `Contents.json`, then run
 
 ```sh
 iconutil -c icns "AppIcon.iconset"
