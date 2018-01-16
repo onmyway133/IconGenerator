@@ -33,7 +33,7 @@ class Generator {
 
   writeContentsJson(json, folderPath) {
     const path = folderPath.concat('/Contents.json')
-    Fs.writeFileSync(path, JSON.stringify(json, null, 2).replace(new RegExp(":", "g"), " :"))
+    Fs.writeFileSync(path, JSON.stringify(json, null, 2).replace(new RegExp(": ", "g"), " :"))
   }
 
   writeImages(originalImagePath, contentsJson, folderPath) {
