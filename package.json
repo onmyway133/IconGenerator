@@ -1,6 +1,6 @@
 {
   "name": "IconGenerator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A macOS app to generate app icons",
   "main": "main.js",
   "repository": "https://github.com/onmyway133/IconGenerator",
