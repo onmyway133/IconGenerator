@@ -21,6 +21,10 @@
     "sharp": "^0.18.2"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.8.2",
     "webpack": "^4.16.5",
