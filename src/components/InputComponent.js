@@ -65,11 +65,13 @@ class InputComponent extends React.Component {
       }
     }
 
-    return React.createElement('div', divOptions,
-      React.createElement(Paper, paperOptions,
-        this.makeImageElement(),
-        this.makeImageDescriptionElement()
-      )
+    return (
+      <div style={divOptions.style}>
+        <Paper style={paperOptions.style}>
+          {this.makeImageElement()}
+          {this.makeImageDescriptionElement()}
+        </Paper>
+      </div>
     )
   }
 

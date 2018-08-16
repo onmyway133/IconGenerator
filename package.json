@@ -2,13 +2,13 @@
   "name": "IconGenerator",
   "version": "1.1.0",
   "description": "A macOS app to generate app icons",
-  "main": "src/main.js",
+  "main": "dist/main.js",
   "repository": "https://github.com/onmyway133/IconGenerator",
   "author": "Khoa Pham",
   "license": "MIT",
   "scripts": {
-    "start": "electron .",
-    "build": "webpack",
+    "start": "npm run babel && electron .",
+    "babel": "babel ./src --out-dir ./dist",
     "release": "electron-packager . --icon=Icon/Icon.icns"
   },
   "dependencies": {
@@ -21,14 +21,13 @@
     "rimraf": "^2.6.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.8.2",
-    "sharp": "^0.20.5",
-    "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0"
+    "sharp": "^0.20.5"
   }
 }

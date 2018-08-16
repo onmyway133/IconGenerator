@@ -1,3 +1,6 @@
 {
+  "plugins": [
+    "transform-react-jsx-source"    
+  ],
   "presets": ["env", "react"]
 }
