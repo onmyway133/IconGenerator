@@ -1,12 +1,12 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
-const Paper = require('material-ui').Paper
-const RadioButtonGroup = require('material-ui').RadioButtonGroup
-const RadioButton = require('material-ui').RadioButton
-const RaisedButton = require('material-ui').RaisedButton
-const CardText = require('material-ui').CardText
-const sizeOf = require('image-size')
-const Generator = require('../library/Generator.js')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Paper from 'material-ui/Paper'
+import RadioButtonGroup from 'material-ui/RadioButton/RadioButtonGroup'
+import RadioButton from 'material-ui/RadioButton'
+import RaisedButton from 'material-ui/RaisedButton'
+import CardText from 'material-ui/Card/CardText'
+import sizeOf from 'image-size'
+import Generator from '../library/Generator'
 
 class InputComponent extends React.Component {
   constructor(props) {
