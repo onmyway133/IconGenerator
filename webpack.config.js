@@ -1,4 +1,9 @@
 module.exports = {
+  mode: "development",
+  entry: "./src/renderer.js",
+  node: {
+    fs: "empty"
+ },
   module: {
     rules: [
       {
