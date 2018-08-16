@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
+    "build": "webpack",
     "release": "electron-packager . --icon=Icon/Icon.icns"
   },
   "dependencies": {
@@ -17,8 +18,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-tap-event-plugin": "^2.0.1",
-    "rimraf": "^2.6.1",
-    "sharp": "^0.18.2"
+    "rimraf": "^2.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -27,6 +27,7 @@
     "babel-preset-react": "^6.24.1",
     "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.8.2",
+    "sharp": "^0.20.5",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
   }
