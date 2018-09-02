@@ -3,6 +3,7 @@ const Fs = require('fs')
 const Os = require('os')
 const rimraf = require('rimraf')
 const Shell = require('electron').shell
+const execSync = require('child_process').execSync
 
 class Generator {
 
@@ -13,8 +14,20 @@ class Generator {
 
     this.writeFolder(folderPath)
     this.writeContentsJson(contentsJson, folderPath)
-    this.writeImages(originalImagePath, contentsJson, folderPath)
-    this.showFinder(folderPath)
+    this.writeImages(originalImagePath, contentsJson, folderPath).then(() => {
+      if (choice === 'Icns') {
+        const iconsetPath = downloadPath.concat('/AppIcon.iconset')
+        Fs.renameSync(folderPath, iconsetPath)
+        Fs.unlinkSync(iconsetPath + '/Contents.json')
+        execSync('iconutil -c icns ' + iconsetPath)
+        this.showFinder(iconsetPath)
+        if (Fs.existsSync(iconsetPath)) {
+          rimraf.sync(iconsetPath)
+        }
+      } else {
+        this.showFinder(folderPath)
+      }
+    })
   }
 
   // Helper
@@ -37,19 +50,24 @@ class Generator {
   }
 
   writeImages(originalImagePath, contentsJson, folderPath) {
-    contentsJson.images.forEach((object) => {
-      const output = folderPath.concat(`/${object.filename}`)
-      const size = object.size.split('x')[0]
-      const scale = object.scale.replace('x', '')
-      const finalSize = size * scale
+    return Promise.all(
+      contentsJson.images.map((object) => {
+        const output = folderPath.concat(`/${object.filename}`)
+        const size = object.size.split('x')[0]
+        const scale = object.scale.replace('x', '')
+        const finalSize = size * scale
 
-      Sharp(originalImagePath)
-        .resize(finalSize, finalSize)
-        .toFile(output, (error, info) => {
-          console.log(error)
-          console.log(info)
+        return new Promise((resolve) => {
+          Sharp(originalImagePath)
+            .resize(finalSize, finalSize)
+            .toFile(output, (error, info) => {
+              console.log(error)
+              console.log(info)
+              resolve()
+            })
         })
-    })
+      })
+    )
   }
 
   makeContentsJson(choice) {
@@ -84,6 +102,8 @@ class Generator {
         return []
       case 'watchOS':
         return ['watch', 'watch-marketing']
+      case 'Icns':
+        return ['mac']
       default:
         return []
     }
