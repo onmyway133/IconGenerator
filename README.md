@@ -19,22 +19,12 @@
 
 - Drag image onto left box
 - Support `png`, `jpeg`, `jpg`, `webp`, `tiff`, `gif`, `svg`
-- Choose platform to generate
-- Generated `AppIcon.appiconset` and save to `Downloads` folder
+- Choose platform to generate: `iPhone`, `iPad`, `macOS`, `tvOS`, `watchOS`, or an `icns file`
+- Generated `AppIcon.appiconset` or `AppIcon.icns` and save to `Downloads` folder
 
 <div align = "center">
 <img src="Screenshots/banner.png" width="600"/>
 </div>
-
-### Generate `icns`
-
-- `IconGenerator` names file in `icon_size` format, to make it work for `iconutil`
-- Go to the folder where `AppIcon.appiconset` is stored, rename it to `AppIcon.iconset`, delete `Contents.json`, then run
-
-```sh
-iconutil -c icns "AppIcon.iconset"
-```
-
 
 ## Credit
 
