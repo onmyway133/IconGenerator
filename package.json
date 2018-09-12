@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run babel && electron .",
-    "babel": "babel ./src --out-dir ./dist",
+    "babel": "babel ./src --out-dir ./dist --copy-files",
     "release": "electron-packager . --icon=Icon/Icon.icns"
   },
   "dependencies": {
