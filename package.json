@@ -18,7 +18,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-tap-event-plugin": "^2.0.1",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "sharp": "^0.20.8"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -27,7 +28,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron-packager": "^12.1.0",
-    "electron-rebuild": "^1.8.2",
-    "sharp": "^0.20.5"
+    "electron-rebuild": "^1.8.2"
   }
 }
