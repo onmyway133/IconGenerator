@@ -1,5 +1,7 @@
 # 𝕴𝖈𝖔𝖓 𝕲𝖊𝖓𝖊𝖗𝖆𝖙𝖔𝖗
 
+❤️ Support my work https://gum.co/rwTsv ❤️
+
 <div align = "center">
 <img src="Screenshots/gif.gif" width="800"/>
 </div>
