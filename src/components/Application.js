@@ -18,7 +18,7 @@ class Application extends React.Component {
         width: '100%',
         alignSelf: 'stretch',
         display: 'flex',
-        backgroundColor: '#F8F8F0'
+        backgroundcolor: '#F8F8F0'
       }
     }
 

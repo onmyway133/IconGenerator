@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Paper from '@material-ui/core/Paper'
-import RadioButtonGroup from '@material-ui/core/RadioButton/RadioButtonGroup'
-import RadioButton from '@material-ui/core/RadioButton'
-import RaisedButton from '@material-ui/core/RaisedButton'
-import CardText from '@material-ui/core/Card/CardText'
+import RadioButtonGroup from '@material-ui/core/RadioGroup'
+import RadioButton from '@material-ui/core/Radio'
+import RaisedButton from '@material-ui/core/Button'
+import CardText from '@material-ui/core/DialogContentText'
 import sizeOf from 'image-size'
 import Generator from '../library/Generator'
 
@@ -165,7 +165,7 @@ class InputComponent extends React.Component {
 
     const groupOptions = {
       name: 'choices',
-      defaultSelected: this.state.choice,
+      defaultselected: this.state.choice,
       onChange: this.handleChoiceChange,
       style: {
         paddingLeft: '10px'
@@ -192,9 +192,10 @@ class InputComponent extends React.Component {
     }
 
     const buttonOptions = {
-      backgroundColor: '#EB394E', 
+      backgroundcolor: '#EB394E', 
       onTouchTap: this.handleGenerate,
       disabled: this.props.file === undefined,
+      variant: "contained",
       style: {
         width: '80%'
       }
