@@ -8,7 +8,7 @@ let win
 
 function createWindow () {
   win = new BrowserWindow({
-    title: 'IconGenerator',
+    title: 'Icon Generator',
     width: 600, 
     height: 500,
     resizable: false,
@@ -29,6 +29,8 @@ function createWindow () {
   })
 
   createMenu()
+
+  win.openDevTools()
 }
 
 app.on('ready', createWindow)
@@ -47,7 +49,7 @@ app.on('activate', () => {
 
 function createMenu() {
   const application = {
-    label: "IconGenerator",
+    label: "Icon Generator",
     submenu: [
       {
         label: "New",

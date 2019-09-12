@@ -1,5 +1,5 @@
 {
-  "name": "IconGenerator",
+  "name": "icon_generator",
   "version": "1.3.0",
   "description": "A macOS app to generate app icons",
   "main": "dist/main.js",
