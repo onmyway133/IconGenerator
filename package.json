@@ -11,12 +11,27 @@
     "babel": "babel ./src --out-dir ./dist --copy-files",
     "release": "electron-packager . --icon=Icon/Icon.icns"
   },
+  "build": {
+    "appId": "com.onmyway133.IconGenerator",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "msi"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  },
   "dependencies": {
     "image-size": "^0.6.1",
-    "material-ui": "^0.19.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-tap-event-plugin": "^2.0.1",
+    "material-ui": "^0.20.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-tap-event-plugin": "^3.0.2",
     "rimraf": "^2.6.1",
     "sharp": "^0.23.0"
   },
