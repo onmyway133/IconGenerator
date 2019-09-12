@@ -12,7 +12,10 @@ function createWindow () {
     width: 600, 
     height: 500,
     resizable: false,
-    icon: __dirname + '/Icon/Icon.icns'
+    icon: __dirname + '/Icon/Icon.icns',
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
 
   win.loadURL(url.format({
@@ -24,6 +27,9 @@ function createWindow () {
   win.on('closed', () => {
     win = null
   })
+
+
+  win.openDevTools()
 
   createMenu()
 }
