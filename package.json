@@ -1,6 +1,6 @@
 {
   "name": "IconGenerator",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A macOS app to generate app icons",
   "main": "dist/main.js",
   "repository": "https://github.com/onmyway133/IconGenerator",
@@ -12,14 +12,13 @@
     "release": "electron-packager . --icon=Icon/Icon.icns"
   },
   "dependencies": {
-    "electron": "^2.0.7",
     "image-size": "^0.6.1",
     "material-ui": "^0.19.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-tap-event-plugin": "^2.0.1",
     "rimraf": "^2.6.1",
-    "sharp": "^0.20.8"
+    "sharp": "^0.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -27,6 +26,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "electron": "^5.0.0",
     "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.8.2"
   }
