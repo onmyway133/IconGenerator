@@ -6,6 +6,8 @@ const Menu = require('electron').Menu
 // global
 let win
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
 function createWindow () {
   win = new BrowserWindow({
     title: 'Icon Generator',
