@@ -31,8 +31,6 @@ function createWindow () {
   })
 
   createMenu()
-
-  win.openDevTools()
 }
 
 app.on('ready', createWindow)
