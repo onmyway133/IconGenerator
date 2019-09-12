@@ -150,7 +150,7 @@ class InputComponent extends React.Component {
     }
 
     const choices = [
-      "iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "Icns"
+      "iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "macOS (Icns)"
     ]
 
     const choiceElements = choices.map((name) => {
@@ -193,7 +193,7 @@ class InputComponent extends React.Component {
 
     const buttonOptions = {
       backgroundcolor: '#EB394E', 
-      onTouchTap: this.handleGenerate,
+      onChange: this.handleGenerate,
       disabled: this.props.file === undefined,
       variant: "contained",
       style: {

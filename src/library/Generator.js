@@ -98,11 +98,7 @@ class Generator {
         return ['iphone', 'ipad', 'ios-marketing']
       case 'macOS':
         return ['mac']
-      case 't̶v̶O̶S̶':
-        return []
-      case 'watchOS':
-        return ['watch', 'watch-marketing']
-      case 'Icns':
+      case 'macOS (Icns)':
         return ['mac']
       default:
         return []
