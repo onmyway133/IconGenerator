@@ -28,11 +28,11 @@
   },
   "dependencies": {
     "image-size": "^0.6.1",
-    "material-ui": "^0.20.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-tap-event-plugin": "^3.0.2",
-    "rimraf": "^2.6.1",
+    "material-ui": "^0.20.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-tap-event-plugin": "^3.0.3",
+    "rimraf": "^2.7.1",
     "sharp": "^0.23.0"
   },
   "devDependencies": {
@@ -41,8 +41,8 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "electron": "^5.0.0",
+    "electron": "^5.0.10",
     "electron-packager": "^14.0.6",
-    "electron-rebuild": "^1.8.2"
+    "electron-rebuild": "^1.8.6"
   }
 }
