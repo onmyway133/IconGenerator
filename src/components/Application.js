@@ -1,6 +1,6 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-const Paper = require('material-ui').Paper
+const Paper = require('@material-ui/core/Paper')
 const MuiThemeProvider = require('material-ui/styles/').MuiThemeProvider
 const InputComponent = require('./InputComponent.js')
 
