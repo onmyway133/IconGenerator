@@ -27,7 +27,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron": "^5.0.0",
-    "electron-packager": "^12.1.0",
+    "electron-packager": "^14.0.6",
     "electron-rebuild": "^1.8.2"
   }
 }
