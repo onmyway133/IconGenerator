@@ -7,7 +7,7 @@ const Menu = require('electron').Menu
 let win
 
 function createWindow () {
-   win = new BrowserWindow({
+  win = new BrowserWindow({
     title: 'IconGenerator',
     width: 600, 
     height: 500,
@@ -27,9 +27,6 @@ function createWindow () {
   win.on('closed', () => {
     win = null
   })
-
-
-  win.openDevTools()
 
   createMenu()
 }
@@ -63,4 +60,10 @@ function createMenu() {
       }
     ]
   }
+
+  const template = [
+    application
+  ]
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 }
