@@ -4,7 +4,7 @@ const Application = require('./components/Application.js')
 const Path = require('path')
 
 // Reload
-function reload(state = {file: nil, error: nil}) {
+function reload(state = {file: null, error: null}) {
   ReactDOM.render(
     React.createElement(Application, state),
     document.getElementById('root')
@@ -28,11 +28,11 @@ function handleDragDrop() {
     if (support.includes(extension)) {
       reload({
         file,
-        error: nil
+        error: null
       })
     } else {
       reload({
-        file: nil,
+        file: null,
         error: 'This file is not yet supported'
       })
     }

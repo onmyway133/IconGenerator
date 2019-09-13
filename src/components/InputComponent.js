@@ -80,7 +80,7 @@ class InputComponent extends React.Component {
 
   makeImageElement() {
     let path
-    if (this.props.file !== nil) {
+    if (this.props.file !== null) {
       path = this.props.file.path
     } else {
       path = ''
@@ -108,11 +108,11 @@ class InputComponent extends React.Component {
 
   makeImageDescriptionElement() {
     let text
-    if (this.props.file !== nil) {
+    if (this.props.file !== null) {
       const size = sizeOf(this.props.file.path)
       const sizeDescription = size.width + 'x' + size.height
       text = this.props.file.name + ' (' + sizeDescription + ')'
-    } else if (this.props.error != nil) {
+    } else if (this.props.error != null) {
       text = this.props.error
     } else {
       text = 'Drag image onto the above box. Prefer 1024x1024 or larger'
