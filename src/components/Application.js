@@ -25,7 +25,7 @@ class Application extends React.Component {
     return (
       <MuiThemeProvider>
         <div style={styles.div}>
-          <InputComponent file={this.props.file} />
+          <InputComponent file={this.props.file} error={this.props.error} />
         </div>
       </MuiThemeProvider>
     )
