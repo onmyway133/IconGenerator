@@ -99,19 +99,6 @@ class InputComponent extends React.Component {
       }
     }
 
-    const divOptions = {
-      style: {
-        
-      }
-    }
-
-    const imgOptions = {
-      style: {
-        
-      },
-      src: path
-    }
-
     return (
       <div style={styles.div}>
         <img style={styles.image} src={path} />
