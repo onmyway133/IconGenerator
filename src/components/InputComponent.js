@@ -189,6 +189,7 @@ class InputComponent extends React.Component {
       <div style={styles.div}>
         <Button 
           style={styles.button}
+          color='secondary'
           onClick={this.handleGenerate}
           disabled={this.props.file === undefined} 
           variant='contained'>
