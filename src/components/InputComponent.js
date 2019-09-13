@@ -22,17 +22,19 @@ class InputComponent extends React.Component {
   }
 
   render() {
-    const divOptions = {
-      style: {
+    const styles = {
+      div: {
         display: 'flex',
         alignSelf: 'stretch',
         width: '100%'
       }
     }
 
-    return React.createElement('div', divOptions, 
-      this.makeImage(),
-      this.makeChoices()    
+    return (
+      <div style={styles.div}>
+        {this.makeImage()}
+        {this.makeChoices()}
+      </div>
     )
   }
 
@@ -84,25 +86,36 @@ class InputComponent extends React.Component {
       path = ''
     }
 
-    const divOptions = {
-      style: {
+    const styles = {
+      div: {
         display: 'flex',
         justifyContent: 'center',
         paddingTop: '20px'
+      },
+      image: {
+        width: '300px',
+        height: '300px',
+        border: '1px solid black'
+      }
+    }
+
+    const divOptions = {
+      style: {
+        
       }
     }
 
     const imgOptions = {
       style: {
-        width: '300px',
-        height: '300px',
-        border: '1px solid black'
+        
       },
       src: path
     }
 
-    return React.createElement('div', divOptions,
-      React.createElement('img', imgOptions)
+    return (
+      <div style={styles.div}>
+        <img style={styles.image} src={path} />
+      </div>
     )
   }
 
@@ -156,16 +169,18 @@ class InputComponent extends React.Component {
 
     const choiceElements = choices.map((name) => {
       return (
-        <FormControlLabel value={name} control={<Radio />} label="{name}" />
+        <FormControlLabel value={name} control={<Radio />} label={name} key={name} />
       )
     })
 
     return (
       <div style={styles.div}>
         <Paper style={styles.paper}>
-          <RadioGroup style={styles.group} defaultselected={this.state.choice} onChange={this.handleChoiceChange} >
-            choiceElements
-          </RadioGroup>
+          <RadioGroup 
+            style={styles.group} 
+            defaultselected={this.state.choice} 
+            onChange={this.handleChoiceChange}
+            children={choiceElements} />
           {this.makeGenerateButton()}
         </Paper>
       </div>
