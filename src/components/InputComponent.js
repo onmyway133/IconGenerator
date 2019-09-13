@@ -129,7 +129,7 @@ class InputComponent extends React.Component {
 
     return (
       <div style={styles.div}>
-        <DialogContentText style={styles.text}>text</DialogContentText>
+        <DialogContentText style={styles.text}>{text}</DialogContentText>
       </div>
     )
   }
