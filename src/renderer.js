@@ -33,7 +33,7 @@ function handleDragDrop() {
     } else {
       reload({
         file: null,
-        error: 'This file is not yet supported'
+        error: 'This file is not yet supported!'
       })
     }
   })
