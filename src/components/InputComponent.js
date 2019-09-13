@@ -189,16 +189,13 @@ class InputComponent extends React.Component {
       <div style={styles.div}>
         <Button 
           style={styles.button}
-          backgroundcolor='EB394E' 
-          disabled={this.props.file} 
-          varient='contained'>
+          color='#EB394E' 
+          onClick={this.handleGenerate}
+          disabled={this.props.file === undefined} 
+          variant='contained'>
           Generate
         </Button>
       </div>
-    )
-
-    return React.createElement('div', divOptions, 
-      React.createElement(Button, buttonOptions, 'Generate')
     )
   }
 }
