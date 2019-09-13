@@ -13,8 +13,8 @@ class Application extends React.Component {
   }
 
   render() {
-    const divOptions = {
-      style: {
+    const styles = {
+      div: {
         width: '100%',
         alignSelf: 'stretch',
         display: 'flex',
@@ -22,14 +22,12 @@ class Application extends React.Component {
       }
     }
 
-    const inputOptions = {
-      file: this.props.file
-    }
-
-    return React.createElement(MuiThemeProvider, {},
-      React.createElement('div', divOptions,
-        React.createElement(InputComponent, inputOptions) 
-      )
+    return (
+      <MuiThemeProvider>
+        <div style={styles.div}>
+          <InputComponent file={this.props.file} />
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
