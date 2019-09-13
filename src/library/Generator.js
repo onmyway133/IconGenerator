@@ -16,7 +16,7 @@ class Generator {
     this.writeContentsJson(contentsJson, folderPath)
     this.writeImages(originalImagePath, contentsJson, folderPath).then(() => {
       console.log(originalImagePath, folderPath, choice)
-      if (choice === 'macOS (Icns') {
+      if (choice === 'macOS (Icns)') {
         const iconsetPath = downloadPath.concat('/AppIcon.iconset')
         Fs.renameSync(folderPath, iconsetPath)
         Fs.unlinkSync(iconsetPath + '/Contents.json')
