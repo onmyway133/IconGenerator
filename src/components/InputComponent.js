@@ -136,17 +136,17 @@ class InputComponent extends React.Component {
   }
 
   makeChoices() {
-    const divOptions = {
-      style: {
+    const styles = {
+      div: {
         flex: 1,
         padding: '10px'
-      }
-    }
-
-    const paperOptions = {
-      style: {
+      },
+      paper: {
         paddingTop: '10px',
         paddingBottom: '10px'
+      },
+      group: {
+        paddingLeft: '10px'
       }
     }
 
@@ -155,35 +155,24 @@ class InputComponent extends React.Component {
     ]
 
     const choiceElements = choices.map((name) => {
-      const options = {
-        value: name,
-        name: name,
-        key: name
-      }
-
-      return React.createElement(FormControlLabel, options)
+      return (
+        <FormControlLabel value={name} control={<Radio />} label="{name}" />
+      )
     })
 
-    const groupOptions = {
-      name: 'choices',
-      defaultselected: this.state.choice,
-      onChange: this.handleChoiceChange,
-      style: {
-        paddingLeft: '10px'
-      }
-    }
-
     return (
-      <div>
-        <Paper>
-          <RadioGroup>choiceElements</RadioGroup>
-          {this.makeGenerateElement()}
+      <div style={styles.div}>
+        <Paper style={styles.paper}>
+          <RadioGroup style={styles.group} defaultselected={this.state.choice} onChange={this.handleChoiceChange} >
+            choiceElements
+          </RadioGroup>
+          {this.makeGenerateButton()}
         </Paper>
       </div>
     )
   }
 
-  makeGenerateElement() {
+  makeGenerateButton() {
     const styles = {
       div: {
         display: 'flex',
