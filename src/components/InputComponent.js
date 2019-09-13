@@ -5,7 +5,7 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 import Radio from '@material-ui/core/Radio'
 import Button from '@material-ui/core/Button'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import CardText from '@material-ui/core/DialogContentText'
+import DialogContentText from '@material-ui/core/DialogContentText'
 import sizeOf from 'image-size'
 import Generator from '../library/Generator'
 
@@ -115,23 +115,22 @@ class InputComponent extends React.Component {
     } else {
       text = 'Drag image onto the above box. Prefer 1024x1024 or larger'
     }
-
-    const divOptions = {
-      style: {
+    
+    const styles = {
+      div: {
         display: 'flex',
         justifyContent: 'center',
         marginTop: '10px'
-      }
-    }
-
-    const textOptions = {
-      style: {
+      },
+      text: {
         textAlign: 'center'
       }
     }
 
-    return React.createElement('div', divOptions, 
-      React.createElement(CardText, textOptions, text)
+    return (
+      <div style={styles.div}>
+        <DialogContentText style={styles.text}>text</DialogContentText>
+      </div>
     )
   }
 
