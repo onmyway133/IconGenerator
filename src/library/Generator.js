@@ -15,6 +15,7 @@ class Generator {
     this.writeFolder(folderPath)
     this.writeContentsJson(contentsJson, folderPath)
     this.writeImages(originalImagePath, contentsJson, folderPath).then(() => {
+      console.log(originalImagePath, folderPath, choice)
       if (choice === 'macOS (Icns') {
         const iconsetPath = downloadPath.concat('/AppIcon.iconset')
         Fs.renameSync(folderPath, iconsetPath)
@@ -61,8 +62,6 @@ class Generator {
           Sharp(originalImagePath)
             .resize(finalSize, finalSize)
             .toFile(output, (error, info) => {
-              console.log(error)
-              console.log(info)
               resolve()
             })
         })

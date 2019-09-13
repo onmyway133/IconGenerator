@@ -4,7 +4,7 @@ const Application = require('./components/Application.js')
 const Path = require('path')
 
 // Reload
-function reload(state = {}) {
+function reload(state = {file: nil, error: nil}) {
   ReactDOM.render(
     React.createElement(Application, state),
     document.getElementById('root')
@@ -25,14 +25,17 @@ function handleDragDrop() {
     const extension = Path.extname(file.path).replace('.', '').toLowerCase()
     const support = ['png', 'jpeg', 'jpg', 'webp', 'tiff', 'gif', 'svg']
 
-    if (!support.includes(extension)) {
-      console.log(extension)
-      return
+    if (support.includes(extension)) {
+      reload({
+        file,
+        error: nil
+      })
+    } else {
+      reload({
+        file: nil,
+        error: 'This file is not yet supported'
+      })
     }
-
-    reload({
-      file
-    })
   })
 
   document.addEventListener('dragover', (e) =>  {
