@@ -30,8 +30,6 @@ function createWindow () {
     win = null
   })
 
-  win.openDevTools()
-
   createMenu()
 }
 
