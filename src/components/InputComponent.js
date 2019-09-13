@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Paper from '@material-ui/core/Paper'
-import RadioButtonGroup from '@material-ui/core/RadioGroup'
-import RadioButton from '@material-ui/core/Radio'
-import RaisedButton from '@material-ui/core/Button'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import Radio from '@material-ui/core/Radio'
+import Button from '@material-ui/core/Button'
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import CardText from '@material-ui/core/DialogContentText'
 import sizeOf from 'image-size'
 import Generator from '../library/Generator'
@@ -156,11 +157,11 @@ class InputComponent extends React.Component {
     const choiceElements = choices.map((name) => {
       const options = {
         value: name,
-        label: name,
+        name: name,
         key: name
       }
 
-      return React.createElement(RadioButton, options)
+      return React.createElement(FormControlLabel, options)
     })
 
     const groupOptions = {
@@ -172,37 +173,42 @@ class InputComponent extends React.Component {
       }
     }
 
-    return React.createElement('div', divOptions,
-      React.createElement(Paper, paperOptions,
-        React.createElement(RadioButtonGroup, groupOptions, 
-          choiceElements
-        ),
-        this.makeGenerateElement()
-      )
+    return (
+      <div>
+        <Paper>
+          <RadioGroup>choiceElements</RadioGroup>
+          {this.makeGenerateElement()}
+        </Paper>
+      </div>
     )
   }
 
   makeGenerateElement() {
-    const divOptions = {
-      style: {
+    const styles = {
+      div: {
         display: 'flex',
         justifyContent: 'center',
         marginTop: '10px'
-      }
-    }
-
-    const buttonOptions = {
-      backgroundcolor: '#EB394E', 
-      onChange: this.handleGenerate,
-      disabled: this.props.file === undefined,
-      variant: "contained",
-      style: {
+      },
+      button: {
         width: '80%'
       }
     }
 
+    return (
+      <div style={styles.div}>
+        <Button 
+          style={styles.button}
+          backgroundcolor='EB394E' 
+          disabled={this.props.file} 
+          varient='contained'>
+          Generate
+        </Button>
+      </div>
+    )
+
     return React.createElement('div', divOptions, 
-      React.createElement(RaisedButton, buttonOptions, 'Generate')
+      React.createElement(Button, buttonOptions, 'Generate')
     )
   }
 }
