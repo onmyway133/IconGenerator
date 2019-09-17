@@ -59,6 +59,16 @@ function createMenu() {
             createWindow()
           }
         }
+      },
+      {
+        type: "separator"
+      },
+      {
+        label: "Quit",
+        accelerator: "Command+Q",
+        click: () => {
+          app.quit()
+        }
       }
     ]
   }
