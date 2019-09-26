@@ -9,12 +9,15 @@
   "scripts": {
     "start": "npm run babel && electron .",
     "babel": "babel ./src --out-dir ./dist --copy-files",
-    "release": "electron-packager . --icon=./Icon/Icon.icns"
+    "release": "electron-packager . --icon=./Icon/Icon.icns",
+    "dist": "electron-builder"
   },
   "build": {
     "appId": "com.onmyway133.IconGenerator",
     "mac": {
-      "category": "public.app-category.productivity"
+      "category": "public.app-category.productivity",
+      "hardenedRuntime": true,
+      "entitlements": "./entitlements.plist"
     },
     "win": {
       "target": "msi"
@@ -24,7 +27,8 @@
         "AppImage",
         "deb"
       ]
-    }
+    },
+    "afterSign": "./afterSignHook.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.4.2",
@@ -42,6 +46,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron": "^5.0.10",
+    "electron-builder": "^21.2.0",
     "electron-packager": "^14.0.6",
     "electron-rebuild": "^1.8.6"
   }
