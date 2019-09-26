@@ -10,10 +10,11 @@
     "start": "npm run babel && electron .",
     "babel": "babel ./src --out-dir ./dist --copy-files",
     "release": "electron-packager . --icon=./Icon/Icon.icns",
-    "dist": "electron-builder"
+    "dist": "npm run babel && electron-builder"
   },
   "build": {
     "appId": "com.onmyway133.IconGenerator",
+    "buildVersion": "20",
     "mac": {
       "category": "public.app-category.productivity",
       "hardenedRuntime": true,
