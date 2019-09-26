@@ -4,6 +4,6 @@
   ],
   "presets": ["env", "react"],
   "ignore": [
-    "afterSignHook.js"
+    "**/afterSignHook.js"
   ]
 }

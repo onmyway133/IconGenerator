@@ -19,7 +19,9 @@
     "mac": {
       "category": "public.app-category.productivity",
       "hardenedRuntime": true,
-      "entitlements": "./entitlements.plist"
+      "gatekeeperAssess": false,
+      "entitlements": "./entitlements.plist",
+      "entitlementsInherit": "./entitlements.plist"
     },
     "win": {
       "target": "msi"
