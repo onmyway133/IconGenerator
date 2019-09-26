@@ -1,6 +1,9 @@
 {
   "plugins": [
-    "transform-react-jsx-source"    
+    "transform-react-jsx-source"
   ],
-  "presets": ["env", "react"]
+  "presets": ["env", "react"],
+  "ignore": [
+    "afterSignHook.js"
+  ]
 }
