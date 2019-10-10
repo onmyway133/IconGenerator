@@ -152,7 +152,7 @@ class InputComponent extends React.Component {
     }
 
     const choices = [
-      "iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "macOS (Icns)"
+      "iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "macOS (Icns)", "watchOS"
     ]
 
     const choiceElements = choices.map((name) => {

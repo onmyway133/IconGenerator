@@ -114,6 +114,8 @@ var Generator = function () {
           return ['mac'];
         case 'macOS (Icns)':
           return ['mac'];
+        case 'watchOS':
+          return ['watch', 'watch-marketing'];
         default:
           return [];
       }

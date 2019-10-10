@@ -243,7 +243,7 @@ var InputComponent = function (_React$Component) {
         }
       };
 
-      var choices = ["iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "macOS (Icns)"];
+      var choices = ["iOS (iPhone)", "iOS (iPad)", "iOS (Universal)", "macOS", "macOS (Icns)", "watchOS"];
 
       var choiceElements = choices.map(function (name) {
         return _react2.default.createElement(_FormControlLabel2.default, { value: name, control: _react2.default.createElement(_Radio2.default, {
