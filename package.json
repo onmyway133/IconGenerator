@@ -13,7 +13,7 @@
   },
   "build": {
     "appId": "com.onmyway133.IconGenerator",
-    "buildVersion": "20",
+    "buildVersion": "21",
     "productName": "Icon Generator",
     "icon": "./Icon/Icon.icns",
     "mac": {
