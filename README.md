@@ -1,12 +1,12 @@
 # 𝕴𝖈𝖔𝖓 𝕲𝖊𝖓𝖊𝖗𝖆𝖙𝖔𝖗
 
-❤️ Support my app ❤️ 
+❤️ Support my apps ❤️ 
 
-- [Push Hero - pure Swift native macOS application to test push notifications](https://www.producthunt.com/posts/push-hero-2)
-- [PastePal - Pasteboard, note and shortcut manager](https://www.producthunt.com/posts/pastepal)
-- [Frame recorder - Recorder gif and video with frame](https://www.producthunt.com/posts/frame-recorder)
-- [Alias - App and file shortcut manager](https://www.producthunt.com/posts/alias-shortcut-manager)
-- [Other apps](https://onmyway133.github.io/projects/)
+- [Push Hero - pure Swift native macOS application to test push notifications](https://onmyway133.com/pushhero)
+- [PastePal - Pasteboard, note and shortcut manager](https://onmyway133.com/pastepal)
+- [Quick Check - smart todo manager](https://onmyway133.com/quickcheck)
+- [Alias - App and file shortcut manager](https://onmyway133.com/alias)
+- [My other apps](https://onmyway133.com/apps/)
 
 ❤️❤️😇😍🤘❤️❤️
 
