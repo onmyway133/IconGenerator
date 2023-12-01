@@ -53,7 +53,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "electron": "^5.0.10",
+    "electron": "^18.3.7",
     "electron-builder": "^21.2.0",
     "electron-packager": "^14.0.6",
     "electron-rebuild": "^1.8.6"
