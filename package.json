@@ -43,7 +43,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "rimraf": "^2.7.1",
-    "sharp": "^0.23.0"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "babel": "^6.23.0",
